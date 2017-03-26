@@ -16,7 +16,7 @@ plugs:
 
 apps:
   liri-calculator:
-    command: bin/launch $SNAP/opt/liri-calculator/bin/liri-calculator
+    command: bin/launch $SNAP/bin/liri-calculator
     plugs:
       - x11
       - opengl
@@ -28,7 +28,8 @@ parts:
     source-type: git
     plugin: qmake
     qt-version: qt5
+    options:
+      - LIRI_INSTALL_PREFIX=/
     project-files: [ liri-calculator.pro]
     build-attributes: ["no-system-libraries"]
     after: [liri-app]
-
