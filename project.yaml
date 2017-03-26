@@ -42,3 +42,12 @@ jobs:
       #QT_BASE_DIR: /home/grout/platform-snap/parts/qt/install/lib/qt5
       #PATH: $QT_BASE_DIR/bin:$PATH
       #LD_LIBRARY_PATH: $QT_BASE_DIR/lib:$LD_LIBRARY_PATH
+  - name: text-snap
+    type: snapcraft
+    source: text
+    source-type: local
+    envvars:
+      QT_BASE_DIR: "/opt/qt58"
+      PATH: "$QT_BASE_DIR/bin:$PATH"
+      LD_LIBRARY_PATH: "$QT_BASE_DIR/lib/x86_64-linux-gnu:$QT_BASE_DIR/lib:$LD_LIBRARY_PATH"
+

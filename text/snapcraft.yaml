@@ -1,0 +1,37 @@
+name: liri-text
+version: '0.1.0'
+summary: A cross-platform material text editor
+description: A cross-platform material text editor
+
+grade: devel
+confinement: strict
+
+plugs:
+  platform:
+    interface: content
+    content: liri-platform0
+    target: liri-platform
+    default-provider: liri-platform0
+    minimum-version: "0.10.0"
+
+apps:
+  liri-text:
+    command: bin/launch $SNAP/bin/liri-text
+    plugs:
+      - x11
+      - opengl
+      - unity7
+
+parts:
+  app:
+    source: https://github.com/lirios/text
+    source-type: git
+    plugin: qmake
+    qt-version: qt5
+    options:
+      - LIRI_INSTALL_PREFIX=/
+    project-files: [ liri-text.pro]
+    build-attributes: ["no-system-libraries"]
+    stage-packages:
+      - sqlite3
+    after: [liri-app]
