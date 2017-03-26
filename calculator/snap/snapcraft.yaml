@@ -1,0 +1,42 @@
+name: liri-calculator
+version: '0.1.0'
+summary: A cross-platform material design calculator
+description: A cross-platform material design calculator
+
+grade: devel
+confinement: strict
+
+plugs:
+  platform:
+    interface: content
+    content: liri-platform0
+    target: liri-platform
+    default-provider: liri-platform0
+    minimum-version: "0.10.0"
+
+apps:
+  liri-calculator:
+    command: bin/launch $SNAP/opt/liri-calculator/bin/liri-calculator
+    plugs:
+      - x11
+      - opengl
+      - unity7
+
+parts:
+  app:
+    source: https://github.com/lirios/calculator
+    source-type: git
+    plugin: qmake
+    qt-version: qt5
+    project-files: [ liri-calculator.pro]
+    build-attributes: ["no-system-libraries"]
+  launcher:
+    plugin: dump
+    source: src
+    organize:
+      launcher.sh: bin/launch
+  runtime:
+    plugin: dump
+    install: |
+      mkdir $SNAPCRAFT_PART_INSTALL/liri-platform
+

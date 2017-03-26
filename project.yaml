@@ -1,0 +1,44 @@
+name: liri-snap-packages
+summary: Snap packages for Liri
+environment:
+  scripts:
+    setup: |
+      packages = [
+        "build-essential",
+        "git",
+        "mesa-common-dev",
+        "libgl1-mesa-dev",
+        "qt58base",
+        "qt58declarative",
+        "qt58quickcontrols2",
+        "qt58svg"
+      ]
+      envvars = {
+        "QT_BASE_DIR": "/opt/qt58",
+        "PATH": "$QT_BASE_DIR/bin:$PATH",
+        "LD_LIBRARY_PATH": "$QT_BASE_DIR/lib/x86_64-linux-gnu:$QT_BASE_DIR/lib:$LD_LIBRARY_PATH"
+      }
+      container.exec("add-apt-repository", "ppa:beineri/opt-qt58-xenial", "-y")
+      container.exec("apt-get", "update", "-y")
+      container.exec("apt-get", "install", "-y", *packages)
+      container.exec("git", "clone", "-b", "develop", "https://github.com/lirios/fluid", "/tmp/fluid")
+      container.exec("scripts/fetch_icons.sh", path="/tmp/fluid")
+      container.exec("qmake", "CONFIG+=use_qt_paths", envvars=envvars, path="/tmp/fluid")
+      container.exec("make", path="/tmp/fluid")
+      container.exec("make", "install", path="/tmp/fluid")
+jobs:
+  #- name: platform-snap
+  #  type: snapcraft
+  #  source: https://github.com/lirios/platform-snap.git
+  #  source-type: git
+  - name: calculator-snap
+    type: snapcraft
+    source: calculator
+    source-type: local
+    envvars:
+      QT_BASE_DIR: "/opt/qt58"
+      PATH: "$QT_BASE_DIR/bin:$PATH"
+      LD_LIBRARY_PATH: "$QT_BASE_DIR/lib/x86_64-linux-gnu:$QT_BASE_DIR/lib:$LD_LIBRARY_PATH"
+      #QT_BASE_DIR: /home/grout/platform-snap/parts/qt/install/lib/qt5
+      #PATH: $QT_BASE_DIR/bin:$PATH
+      #LD_LIBRARY_PATH: $QT_BASE_DIR/lib:$LD_LIBRARY_PATH
