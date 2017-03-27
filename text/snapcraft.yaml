@@ -21,6 +21,7 @@ apps:
       - x11
       - opengl
       - unity7
+      - home
 
 parts:
   app:
@@ -35,3 +36,4 @@ parts:
     stage-packages:
       - sqlite3
     after: [liri-app]
+
