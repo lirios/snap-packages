@@ -16,7 +16,7 @@ plugs:
 
 apps:
   liri-text:
-    command: bin/launch $SNAP/bin/liri-text
+    command: liri-app-launch $SNAP/bin/liri-text
     plugs:
       - x11
       - opengl
@@ -36,4 +36,3 @@ parts:
     stage-packages:
       - sqlite3
     after: [liri-app]
-

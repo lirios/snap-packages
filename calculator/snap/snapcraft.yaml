@@ -16,7 +16,7 @@ plugs:
 
 apps:
   liri-calculator:
-    command: bin/launch $SNAP/bin/liri-calculator
+    command: liri-app-launch $SNAP/bin/liri-calculator
     plugs:
       - x11
       - opengl
