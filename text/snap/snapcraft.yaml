@@ -31,8 +31,10 @@ parts:
     qt-version: qt5
     options:
       - LIRI_INSTALL_PREFIX=/
+      - DATA_RUNTIME_PREFIX=/snap/liri-text/current/share/
     project-files: [ liri-text.pro]
     build-attributes: ["no-system-libraries"]
     stage-packages:
       - sqlite3
     after: [liri-app]
+
