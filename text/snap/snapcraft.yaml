@@ -35,5 +35,5 @@ parts:
     build-attributes: ["no-system-libraries"]
     stage-packages:
       - sqlite3
-    after: [liri-platform/v0.10.0]
+    after: [liri-platform-v0.10.0]
 
