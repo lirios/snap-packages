@@ -32,7 +32,7 @@ jobs:
   #  source: https://github.com/lirios/platform-snap.git
   #  source-type: git
   - name: calculator-snap
-    type: snapcraft
+    extends: snapcraft
     source: calculator
     source-type: local
     envvars:
@@ -43,11 +43,10 @@ jobs:
       #PATH: $QT_BASE_DIR/bin:$PATH
       #LD_LIBRARY_PATH: $QT_BASE_DIR/lib:$LD_LIBRARY_PATH
   - name: text-snap
-    type: snapcraft
+    extends: snapcraft
     source: text
     source-type: local
     envvars:
       QT_BASE_DIR: "/opt/qt58"
       PATH: "$QT_BASE_DIR/bin:$PATH"
       LD_LIBRARY_PATH: "$QT_BASE_DIR/lib/x86_64-linux-gnu:$QT_BASE_DIR/lib:$LD_LIBRARY_PATH"
-
