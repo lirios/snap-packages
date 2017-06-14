@@ -6,14 +6,13 @@ Snap packages for Liri apps.
 
 The following modules and their dependencies are required:
 
-* [grout](https://github.com/tim-sueberkrueb/grout)
+* [baka](https://github.com/tim-sueberkrueb/baka)
 
 ### Build
 
 From the root of the repository, run:
 ```sh
-grout
+baka
 ```
 
-Resulting build artifacts can be found in `/tmp/grout/`.
-
+Resulting build artifacts can be found in `.baka/`.
