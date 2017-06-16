@@ -6,50 +6,30 @@ environment:
       require('python', '3.5.0')
       baka = require('baka', '0.1.0')
 
-      packages = [
-        "build-essential",
-        "git",
-        "mesa-common-dev",
-        "libgl1-mesa-dev",
-        "qt58base",
-        "qt58declarative",
-        "qt58quickcontrols2",
-        "qt58svg"
-      ]
-      envvars = {
-        "QT_BASE_DIR": "/opt/qt58",
-        "PATH": "$QT_BASE_DIR/bin:$PATH",
-        "LD_LIBRARY_PATH": "$QT_BASE_DIR/lib/x86_64-linux-gnu:$QT_BASE_DIR/lib:$LD_LIBRARY_PATH"
-      }
-      baka.run("add-apt-repository", "ppa:beineri/opt-qt58-xenial", "-y")
-      baka.run("apt-get", "update", "-y")
-      baka.run("apt-get", "install", "-y", *packages)
-      baka.run("git", "clone", "-b", "develop", "--recursive", "https://github.com/lirios/fluid", "/tmp/fluid")
-      baka.run("scripts/fetch_icons.sh", path="/tmp/fluid")
-      baka.run("qmake", "CONFIG+=use_qt_paths", envvars=envvars, path="/tmp/fluid")
-      baka.run("make", path="/tmp/fluid")
-      baka.run("make", "install", path="/tmp/fluid")
+      # Prerequisites to make snap work
+      baka.box.run('apt-get', 'dist-upgrade', '-y')
+      baka.box.run('apt-get', 'install', 'squashfuse', '-y')
+
+      # Install platform snap package
+      baka.box.run('snap', 'install', '--edge', 'liri-platform0')
 jobs:
-  #- name: platform-snap
-  #  type: snapcraft
-  #  source: https://github.com/lirios/platform-snap.git
-  #  source-type: git
+  - name: base
+    extends: base
+    source: base
+    source-type: local
   - name: calculator-snap
     extends: snapcraft
     source: calculator
     source-type: local
-    envvars:
-      QT_BASE_DIR: "/opt/qt58"
-      PATH: "$QT_BASE_DIR/bin:$PATH"
-      LD_LIBRARY_PATH: "$QT_BASE_DIR/lib/x86_64-linux-gnu:$QT_BASE_DIR/lib:$LD_LIBRARY_PATH"
-      #QT_BASE_DIR: /home/grout/platform-snap/parts/qt/install/lib/qt5
-      #PATH: $QT_BASE_DIR/bin:$PATH
-      #LD_LIBRARY_PATH: $QT_BASE_DIR/lib:$LD_LIBRARY_PATH
+    scripts:
+      setup: |
+        baka = require('baka', '0.1.0')
+        baka.box.run('cp', '-r', '../base/snap/plugins', 'snap')
   - name: text-snap
     extends: snapcraft
     source: text
     source-type: local
-    envvars:
-      QT_BASE_DIR: "/opt/qt58"
-      PATH: "$QT_BASE_DIR/bin:$PATH"
-      LD_LIBRARY_PATH: "$QT_BASE_DIR/lib/x86_64-linux-gnu:$QT_BASE_DIR/lib:$LD_LIBRARY_PATH"
+    scripts:
+      setup: |
+        baka = require('baka', '0.1.0')
+        baka.box.run('cp', '-r', '../base/snap/plugins', 'snap')

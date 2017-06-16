@@ -26,14 +26,13 @@ parts:
   app:
     source: https://github.com/lirios/text
     source-type: git
-    plugin: qmake
-    qt-version: qt5
-    options:
-      - LIRI_INSTALL_PREFIX=/
-      - DATA_RUNTIME_PREFIX=/snap/liri-text/current/share/liri-text
-    project-files: [ liri-text.pro]
+    plugin: qbs
     build-attributes: ["no-system-libraries"]
+    build-packages:
+      - build-essential
+      - mesa-common-dev
+      - libgl1-mesa-dev
+      - g++
     stage-packages:
       - sqlite3
     after: [liri-platform-v0.10.0]
-

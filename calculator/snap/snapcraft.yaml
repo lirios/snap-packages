@@ -25,11 +25,11 @@ parts:
   app:
     source: https://github.com/lirios/calculator
     source-type: git
-    plugin: qmake
-    qt-version: qt5
-    options:
-      - LIRI_INSTALL_PREFIX=/
-    project-files: [ liri-calculator.pro]
+    plugin: qbs
     build-attributes: ["no-system-libraries"]
     after: [liri-platform-v0.10.0]
-
+    build-packages:
+      - build-essential
+      - mesa-common-dev
+      - libgl1-mesa-dev
+      - g++
