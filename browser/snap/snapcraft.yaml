@@ -1,0 +1,44 @@
+name: liri-browser
+version: '0.1.0'
+summary: A cross-platform material web browser
+description: A cross-platform material web browser
+
+grade: devel
+confinement: strict
+
+plugs:
+  browser-sandbox:
+    interface: browser-support
+    allow-sandbox: true
+  platform:
+    interface: content
+    content: liri-platform0
+    target: liri-platform
+    default-provider: liri-platform0
+
+apps:
+  liri-text:
+    command: liri-app-launch $SNAP/bin/liri-browser
+    plugs:
+      - x11
+      - opengl
+      - unity7
+      - browser-sandbox
+      - network
+      - network-bind
+      - pulseaudio
+      - camera
+      - screen-inhibit-control
+
+parts:
+  app:
+    source: https://github.com/lirios/browser
+    source-type: git
+    plugin: qbs
+    build-attributes: ["no-system-libraries"]
+    build-packages:
+      - build-essential
+      - mesa-common-dev
+      - libgl1-mesa-dev
+      - g++
+    after: [liri-platform-v0.10.0]

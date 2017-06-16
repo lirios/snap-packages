@@ -17,6 +17,14 @@ jobs:
     extends: base
     source: base
     source-type: local
+  - name: browser-snap
+    extends: snapcraft
+    source: browser
+    source-type: local
+    scripts:
+      setup: |
+        baka = require('baka', '0.1.0')
+        baka.box.run('cp', '-r', '../base/snap/plugins', 'snap')
   - name: calculator-snap
     extends: snapcraft
     source: calculator
