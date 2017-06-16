@@ -145,7 +145,10 @@ class QbsPlugin(snapcraft.BasePlugin):
                   '-j', str(self.options.qbs_jobs or multiprocessing.cpu_count()),
                   self.options.qbs_build_variant,
                   'qbs.installRoot:' + self.installdir,
-                  'cpp.libraryPaths:["{}"]'.format('{}/lib'.format(self._snap_path)),
+                  'cpp.libraryPaths:["{}","{}"]'.format(
+                      '{}/lib'.format(self._snap_path),
+                      '{}/usr/lib/x86_64-linux-gnu'.format(self._snap_path)
+                  ),
                   'cpp.includePaths:["{}","{}","{}","{}","{}"]'.format(
                       '{}/include/KF5/Solid'.format(self._snap_path),
                       '{}/include/KF5/NetworkManagerQt'.format(self._snap_path),
@@ -170,7 +173,8 @@ class QbsPlugin(snapcraft.BasePlugin):
         env['QML_IMPORT_PATH'] = self._snap_path + '/lib/qt5/qml'
         env['QML2_IMPORT_PATH'] = self._snap_path + '/lib/qt5/qml'
         env['LD_LIBRARY_PATH'] = self._snap_path + '/lib/qt5/lib:' + \
-                                 self._snap_path + '/usr/local/lib'
+                                 self._snap_path + '/usr/local/lib:' + \
+                                 self._snap_path + '/usr/lib/x86_64-linux-gnu'
         env['PATH'] = self._snap_path + '/usr/bin/:' \
                       + self._snap_path + '/usr/local/bin:' + \
                       os.environ["PATH"]
