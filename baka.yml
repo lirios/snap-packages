@@ -41,3 +41,11 @@ jobs:
       setup: |
         baka = require('baka', '0.1.0')
         baka.box.run('cp', '-r', '../base/snap/plugins', 'snap')
+  - name: files-snap
+    extends: snapcraft
+    source: files
+    source-type: local
+    scripts:
+      setup: |
+        baka = require('baka', '0.1.0')
+        baka.box.run('cp', '-r', '../base/snap/plugins', 'snap')
