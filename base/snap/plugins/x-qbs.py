@@ -145,16 +145,20 @@ class QbsPlugin(snapcraft.BasePlugin):
                   '-j', str(self.options.qbs_jobs or multiprocessing.cpu_count()),
                   self.options.qbs_build_variant,
                   'qbs.installRoot:' + self.installdir,
-                  'cpp.libraryPaths:["{}","{}"]'.format(
+                  'cpp.libraryPaths:["{}","{}","{}"]'.format(
                       '{}/lib'.format(self._snap_path),
+                      '{}/lib/x86_64-linux-gnu'.format(self._snap_path),
                       '{}/usr/lib/x86_64-linux-gnu'.format(self._snap_path)
                   ),
-                  'cpp.includePaths:["{}","{}","{}","{}","{}"]'.format(
+                  'cpp.includePaths:["{}","{}","{}","{}","{}","{}","{}","{}"]'.format(
+                      '{}/include'.format(self._snap_path),
+                      '{}/usr/include'.format(self._snap_path),
                       '{}/include/KF5/Solid'.format(self._snap_path),
                       '{}/include/KF5/NetworkManagerQt'.format(self._snap_path),
                       '{}/include/KF5/ModemManagerQt'.format(self._snap_path),
                       '{}/include/KF5/KWallet'.format(self._snap_path),
-                      '{}/include/KF5'.format(self._snap_path)
+                      '{}/include/KF5'.format(self._snap_path),
+                      '{}/include/LiriWaylandClient/0.9.0.1'.format(self._snap_path)
                   ),
                   'profile:' + build_profile] + self.options.qbs_options,
                   env=env)
@@ -174,7 +178,8 @@ class QbsPlugin(snapcraft.BasePlugin):
         env['QML2_IMPORT_PATH'] = self._snap_path + '/lib/qt5/qml'
         env['LD_LIBRARY_PATH'] = self._snap_path + '/lib/qt5/lib:' + \
                                  self._snap_path + '/usr/local/lib:' + \
-                                 self._snap_path + '/usr/lib/x86_64-linux-gnu'
+                                 self._snap_path + '/usr/lib/x86_64-linux-gnu:' +\
+                                 self._snap_path + '/lib/x86_64-linux-gnu'
         env['PATH'] = self._snap_path + '/usr/bin/:' \
                       + self._snap_path + '/usr/local/bin:' \
                       + self._snap_path + '/lib/qt5/bin:' + \

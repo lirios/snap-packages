@@ -1,0 +1,39 @@
+name: liri-shell
+version: '0.1.0'
+summary: Responsive shell for Liri OS
+description: QtQuick and Wayland shell for convergence
+
+grade: devel
+confinement: classic
+
+plugs:
+  platform:
+    interface: content
+    content: liri-platform0
+    target: liri-platform
+    default-provider: liri-platform0
+
+apps:
+  liri-shell:
+    # Classic snap needs full path to liri-app-launch
+    command: bin/liri-app-launch $SNAP/bin/liri-shell
+    plugs:
+      - x11
+      - opengl
+      - unity7
+      - home
+
+parts:
+  app:
+    source: https://github.com/lirios/shell
+    source-type: git
+    plugin: qbs
+    build-attributes: ["no-system-libraries"]
+    build-packages:
+      - build-essential
+      - mesa-common-dev
+      - libgl1-mesa-dev
+      - g++
+      - libwayland-dev
+      - libglib2.0-dev
+    after: [liri-platform-v0.10.0]
