@@ -17,7 +17,7 @@ plugs:
     default-provider: liri-platform0
 
 apps:
-  liri-text:
+  liri-browser:
     command: liri-app-launch $SNAP/bin/liri-browser
     plugs:
       - x11
