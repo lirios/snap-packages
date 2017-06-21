@@ -38,4 +38,13 @@ parts:
       - libpam0g-dev
       - libglib2.0-dev
       - libfontconfig-dev
+    after:
+      - liri-workspace
+      - liri-platform-v0.10.0
+    # Liri Workspace
+    # Base applications and settings for the Liri OS workspace
+  liri-workspace:
+    plugin: qbs
+    source: https://github.com/lirios/workspace.git
+    build-attributes: ["no-system-libraries"]
     after: [liri-platform-v0.10.0]
