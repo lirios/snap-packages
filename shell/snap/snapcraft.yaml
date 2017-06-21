@@ -36,4 +36,5 @@ parts:
       - g++
       - libwayland-dev
       - libglib2.0-dev
+      - libfontconfig-dev
     after: [liri-platform-v0.10.0]
