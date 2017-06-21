@@ -119,7 +119,7 @@ class QbsPlugin(snapcraft.BasePlugin):
             self.options.qt_version,
             self.options.qbs_profile)
 
-        qmake = self._snap_path + '/usr/bin/qmake'
+        qmake = self._snap_path + '/lib/qt5/bin/qmake'
 
         # Setup the Qt profile.
         self.run(['qbs', 'setup-qt', qmake, build_profile], env=env)
@@ -176,6 +176,7 @@ class QbsPlugin(snapcraft.BasePlugin):
                                  self._snap_path + '/usr/local/lib:' + \
                                  self._snap_path + '/usr/lib/x86_64-linux-gnu'
         env['PATH'] = self._snap_path + '/usr/bin/:' \
-                      + self._snap_path + '/usr/local/bin:' + \
+                      + self._snap_path + '/usr/local/bin:' \
+                      + self._snap_path + '/lib/qt5/bin:' + \
                       os.environ["PATH"]
         return env
