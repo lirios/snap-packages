@@ -35,6 +35,7 @@ parts:
       - libgl1-mesa-dev
       - g++
       - libwayland-dev
+      - libpam0g-dev
       - libglib2.0-dev
       - libfontconfig-dev
     after: [liri-platform-v0.10.0]
