@@ -41,4 +41,6 @@ parts:
       - mesa-common-dev
       - libgl1-mesa-dev
       - g++
-    after: [liri-platform-v0.10.0]
+    after:
+      - liri-platform-v0.10.0
+      - liri-platform-ext-libgl-software
