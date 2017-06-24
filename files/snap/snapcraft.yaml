@@ -37,4 +37,6 @@ parts:
       - libtag1-dev
     stage-packages:
       - libtag1v5
-    after: [liri-platform-v0.10.0]
+    after:
+      - liri-platform-v0.10.0
+      - liri-platform-ext-snap-classic
