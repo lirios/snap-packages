@@ -6,25 +6,13 @@ description: Liri file manager
 grade: devel
 confinement: classic
 
-plugs:
-  platform:
-    interface: content
-    content: liri-platform0
-    target: liri-platform
-    default-provider: liri-platform0
-
 apps:
   liri-files:
     # Classic snap needs full path to liri-app-launch
     command: bin/liri-app-launch $SNAP/bin/liri-files
-    plugs:
-      - x11
-      - opengl
-      - unity7
-      - home
 
 parts:
-  app:
+  liri-files:
     source: https://github.com/lirios/files
     source-type: git
     plugin: qbs
