@@ -6,25 +6,13 @@ description: QtQuick and Wayland shell for convergence
 grade: devel
 confinement: classic
 
-plugs:
-  platform:
-    interface: content
-    content: liri-platform0
-    target: liri-platform
-    default-provider: liri-platform0
-
 apps:
   liri-shell:
     # Classic snap needs full path to liri-app-launch
     command: bin/liri-app-launch $SNAP/bin/liri-shell
-    plugs:
-      - x11
-      - opengl
-      - unity7
-      - home
 
 parts:
-  app:
+  liri-shell:
     source: https://github.com/lirios/shell
     source-type: git
     plugin: qbs
