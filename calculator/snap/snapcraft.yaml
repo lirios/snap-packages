@@ -22,7 +22,7 @@ apps:
       - unity7
 
 parts:
-  app:
+  liri-calculator:
     source: https://github.com/lirios/calculator
     source-type: git
     plugin: qbs

@@ -23,7 +23,7 @@ apps:
       - home
 
 parts:
-  app:
+  liri-text:
     source: https://github.com/lirios/text
     source-type: git
     plugin: qbs
