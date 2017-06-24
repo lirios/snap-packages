@@ -41,6 +41,7 @@ parts:
     after:
       - liri-workspace
       - liri-platform-v0.10.0
+      - liri-platform-ext-snap-classic
     # Liri Workspace
     # Base applications and settings for the Liri OS workspace
   liri-workspace:
