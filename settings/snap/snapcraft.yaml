@@ -1,0 +1,28 @@
+name: liri-settings
+version: '0.1.0'
+summary: Settings
+description: Liri Settings
+
+grade: devel
+confinement: classic
+
+apps:
+  liri-settings:
+    # Classic snap needs full path to liri-app-launch
+    command: bin/liri-app-launch $SNAP/bin/liri-settings
+
+parts:
+  liri-settings:
+    source: https://github.com/lirios/settings
+    source-type: git
+    plugin: qbs
+    build-attributes: ["no-system-libraries"]
+    build-packages:
+      - build-essential
+      - mesa-common-dev
+      - libgl1-mesa-dev
+      - g++
+      - libpolkit-gobject-1-dev
+    after:
+      - liri-platform-v0.10.0
+      - liri-platform-ext-snap-classic

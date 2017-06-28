@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Settings
+Comment=Manages system settings
+Exec=liri-settings
+Terminal=false
+Type=Application
+Categories=Qt;Settings;Core;
+Keywords=Preferences;Settings
+Icon=preferences-system
