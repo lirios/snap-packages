@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Terminal
+Comment=Use the command line
+Exec=liri-terminal %U
+Terminal=false
+Type=Application
+Categories=Qt;System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;cmd;terminal
+Icon=utilities-terminal
