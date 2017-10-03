@@ -1,18 +1,26 @@
-## Liri App Snaps
+## Liri Snap Packages
 
-Snap packages for Liri apps.
+Snap packages for Liri core apps, cross-platform apps and shell.
 
 ### Dependencies
 
-The following modules and their dependencies are required:
-
-* [baka](https://github.com/tim-sueberkrueb/baka)
+* [Ubuntu](https://www.ubuntu.com/) == 16.04
+* [snapcraft](https://snapcraft.io)
 
 ### Build
 
-From the root of the repository, run:
+It is recommended to build inside a clean lxc container with Ubuntu 16.04.
+
+From the root each app directory, run:
 ```sh
-baka
+snapcraft
 ```
 
-Resulting build artifacts can be found in `.baka/`.
+### Update plugins
+
+To update the snapcraft [plugins](https://github.com/lirios/snapcraft-plugins) submodules, run:
+```
+git submodule foreach git pull origin develop
+git add -A
+git commit
+```
