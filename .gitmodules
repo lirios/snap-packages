@@ -1,0 +1,21 @@
+[submodule "browser/snap/plugins"]
+	path = browser/snap/plugins
+	url = https://github.com/lirios/snapcraft-plugins
+[submodule "calculator/snap/plugins"]
+	path = calculator/snap/plugins
+	url = https://github.com/lirios/snapcraft-plugins
+[submodule "files/snap/plugins"]
+	path = files/snap/plugins
+	url = https://github.com/lirios/snapcraft-plugins
+[submodule "settings/snap/plugins"]
+	path = settings/snap/plugins
+	url = https://github.com/lirios/snapcraft-plugins
+[submodule "shell/snap/plugins"]
+	path = shell/snap/plugins
+	url = https://github.com/lirios/snapcraft-plugins
+[submodule "terminal/snap/plugins"]
+	path = terminal/snap/plugins
+	url = https://github.com/lirios/snapcraft-plugins
+[submodule "text/snap/plugins"]
+	path = text/snap/plugins
+	url = https://github.com/lirios/snapcraft-plugins
