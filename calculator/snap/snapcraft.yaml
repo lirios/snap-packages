@@ -9,9 +9,9 @@ confinement: strict
 plugs:
   platform:
     interface: content
-    content: liri-platform0
+    content: liri-platform
     target: liri-platform
-    default-provider: liri-platform0
+    default-provider: liri-platform-0-9
 
 apps:
   liri-calculator:
@@ -27,7 +27,7 @@ parts:
     source-type: git
     plugin: qbs
     build-attributes: ["no-system-libraries"]
-    after: [liri-platform-v0.10.0]
+    after: [liri-platform-0-9]
     build-packages:
       - build-essential
       - mesa-common-dev

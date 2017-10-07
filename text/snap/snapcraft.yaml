@@ -9,9 +9,9 @@ confinement: strict
 plugs:
   platform:
     interface: content
-    content: liri-platform0
+    content: liri-platform
     target: liri-platform
-    default-provider: liri-platform0
+    default-provider: liri-platform-0-9
 
 apps:
   liri-text:
@@ -35,4 +35,4 @@ parts:
       - g++
     stage-packages:
       - sqlite3
-    after: [liri-platform-v0.10.0]
+    after: [liri-platform-0-9]

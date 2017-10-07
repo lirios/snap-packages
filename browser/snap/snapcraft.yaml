@@ -12,9 +12,9 @@ plugs:
     allow-sandbox: true
   platform:
     interface: content
-    content: liri-platform0
+    content: liri-platform
     target: liri-platform
-    default-provider: liri-platform0
+    default-provider: liri-platform-0-9
 
 apps:
   liri-browser:
@@ -42,5 +42,5 @@ parts:
       - libgl1-mesa-dev
       - g++
     after:
-      - liri-platform-v0.10.0
+      - liri-platform-0-9
       - liri-platform-ext-qt-xcb-software

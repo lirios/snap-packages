@@ -28,7 +28,7 @@ parts:
       - libfontconfig-dev
     after:
       - liri-workspace
-      - liri-platform-v0.10.0
+      - liri-platform-0-9
       - liri-platform-ext-snap-classic
     # Liri Workspace
     # Base applications and settings for the Liri OS workspace
@@ -36,4 +36,3 @@ parts:
     plugin: qbs
     source: https://github.com/lirios/workspace.git
     build-attributes: ["no-system-libraries"]
-    after: [liri-platform-v0.10.0]
