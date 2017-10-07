@@ -43,4 +43,4 @@ parts:
       - g++
     after:
       - liri-platform-v0.10.0
-      - liri-platform-ext-libgl-software
+      - liri-platform-ext-qt-xcb-software
