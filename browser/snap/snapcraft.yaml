@@ -19,6 +19,12 @@ plugs:
 apps:
   liri-browser:
     command: liri-app-launch $SNAP/bin/liri-browser
+    environment:
+        # Workaround QtWebEngine crashing when
+        # using Nouveau graphic drivers by forcing
+        # the Qt xcb plugin to use software rendering:
+        # https://bugreports.qt.io/browse/QTBUG-41242
+        QT_XCB_FORCE_SOFTWARE_OPENGL: 1
     plugs:
       - x11
       - opengl
@@ -43,4 +49,3 @@ parts:
       - g++
     after:
       - liri-platform-0-9
-      - liri-platform-ext-qt-xcb-software
